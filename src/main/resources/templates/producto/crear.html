@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Crear Producto</title>
+	<!-- Bootstrap core CSS -->
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link th:href="@{/css/signin.css}" rel="stylesheet">
+</head>
+
+<body class="text-center">
+	<form id="forl" class="form-signin" th:action="@{/producto/new}" th:object="${producto}" method="post">
+		<h1 class="h3 mb-3 font-weight-normal">Crear producto:</h1>
+		<div>
+			<label for="nombre" class="sr-only">Nombre:</label>
+			<input type="text" id="nombre" name="nombre" class="form-control" required autofocus>
+		</div>
+		<div>
+			<label for="descripcion" class="sr-only">Descripción:</label>
+			<input type="text" id="descripcion" name="descripcion" class="form-control" required >
+		</div>
+		<div>
+			<label for="precio" class="sr-only">Precio:</label>
+			<input type="text" id="precio" name="precio" class="form-control" required>
+		</div>
+		<div>
+			<label for="stock" class="sr-only">Stock:</label>
+			<input type="number" id="stock" name="stock" class="form-control">
+		</div>
+		<div>
+			<label for="impuesto" class="sr-only">Impuesto:</label>
+			<input type="text" id="impuesto" name="impuesto" class="form-control">
+		</div>
+		<div>
+			<p th:text="${mensaje}" style="color: red;">mensaje</p>
+		</div>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Crear</button><br><br>
+		<a href="/" class="btn btn-lg btn-primary btn-block">Inicio</a>
+		<p class="mt-5 mb-3 text-muted"> &copy; Bea</p>
+	</form>
+</body>
+
+</html>

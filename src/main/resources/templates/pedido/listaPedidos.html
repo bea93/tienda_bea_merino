@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="head"></head>
+
+<body>
+	<!-- Navigation-->
+	<nav th:replace="nav">
+	</nav>
+	<!-- Header-->
+	<header th:replace="header">
+	</header>
+	<!-- Section-->
+	<section class="py-5">
+		<div class="container px-4 px-lg-5 mt-5">
+			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+				<table class="table table-striped">
+					<tr>
+						<th>Id pedido</th>
+						<th>Id Usuario</th>
+						<th>Método Pago</th>
+						<th>Estado</th>
+						<th>Fecha</th>
+						<th></th>
+						<th></th>
+					</tr>
+					<tr th:each="pedido:${lista}">
+						<td th:text="${pedido.id}"></td>
+						<td th:text="${pedido.idUsuario}"></td>
+						<td th:text="${pedido.metodoPago}"></td>
+						<td th:text="${pedido.estado}"></td>
+						<td th:text="${pedido.fecha}"></td>
+						<td th:if="${session.rol == 3}">
+							<a th:href="@{/pedido/detalles/}+${pedido.id}" class="btn btn-lg btn-primary btn-block">Detalles pedido</a >
+						</td >
+						<td th:if="${session.rol == 3}">
+							<a th:href="@{/pedido/solicitarCancelar/}+${pedido.id}" class="btn btn-lg btn-primary btn-block">Cancelar pedido</a >
+						</td >
+						<td th:if="${session.rol == 2 || session.rol == 1 && pedido.estado != 'Enviado'}">
+							<a th:href="@{/pedido/enviar/}+${pedido.id}" class="btn btn-lg btn-primary btn-block">Cambiar estado</a >
+						</td >
+						<td th:if="${session.rol == 1 && pedido.estado == 'Pendiente de cancelar'}">
+							<a th:href="@{/pedido/cancelar/}+${pedido.id}" class="btn btn-lg btn-primary btn-block">Cancelar pedido</a >
+						</td >
+					</tr>
+				</table>
+			</div>
+		</div>
+	</section>
+	<!-- Footer-->
+	<footer th:replace="footer"></footer>
+</body>
+
+</html>

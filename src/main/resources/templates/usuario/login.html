@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>Tienda</title>
+	<!-- Favicon-->
+	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/signin.css}" rel="stylesheet">
+	
+</head>
+
+<body class="text-center">
+
+	
+	<form id="forl" class="form-signin" th:action="@{/usuario/login}" th:object="${usuario}" method="post">
+		<h1 class="h3 mb-3 font-weight-normal">Inicia sesión</h1>
+		<div>
+			<label for="email" class="sr-only">Email:</label>
+			<input type="email" id="email" name="email" class="form-control" required autofocus>
+		</div>
+		<div id="ojo2" >
+			<label for="clave" class="sr-only">Password:</label>
+			<input type="password" id="clave" name="clave" class="form-control" required>
+			<img id="ojo" style="padding-left: 5px; vertical-align: middle;" th:src="@{/css/visible.png}" width="20" />
+			</div  >
+		<div>
+			<p th:text="${mensaje}" style="color: red;">mensaje</p>
+		</div>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button><br><br>
+		<a th:href="@{/usuario/new}" class="btn btn-lg btn-primary btn-block">Registrarse</a>
+		<p class="mt-5 mb-3 text-muted"> &copy; Bea Merino</p>
+	</form>
+	<!-- Bootstrap core JS-->
+		<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+		<!-- Core theme JS-->
+		<script th:src="@{/js/scripts.js}"></script>
+</body>
+
+</html>

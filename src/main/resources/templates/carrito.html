@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="head"></head>
+
+<body>
+	<!-- Navigation-->
+	<nav th:replace="nav">
+	</nav>
+	<!-- Header-->
+	<header class="bg-dark py-5">
+		<div class="container px-4 px-lg-5 my-5">
+			<div class="text-center text-white">
+				<h1 class="display-4 fw-bolder">Carrito</h1>
+			</div>
+		</div>
+	</header>
+	<!-- Section-->
+	<section class="py-5">
+		<div class="container px-4 px-lg-5 mt-5">
+			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+				<table class="table table-striped">
+					<tr>
+						<th>Id</th>
+						<th>Producto</th>
+						<th>Cantidad</th>
+						<th>Precio Unidad</th>
+						<th>Total</th>
+						<th></th>
+					</tr>
+					<tr th:each="detallesPedido:${session.carrito}">
+						<td th:text="${detallesPedido.idProducto}"></td>
+						<td th:text="${detallesPedido.nombreProducto}"></td>
+						<td th:text="${detallesPedido.unidades}"></td>
+						<td th:text="${detallesPedido.precioUnidad}"></td>
+						<td th:text="${detallesPedido.total}"></td>
+
+						<td>
+							<a th:href="@{/carrito/del/} + ${detallesPedido.idProducto}">
+								<button class="btn btn-lg btn-primary btn-block" type="submit">Eliminar
+									producto</button>
+							</a>
+						</td>
+					</tr>
+				</table>
+				<div th:if="${session.rol != 0 }">
+					
+					<a class="btn btn-lg btn-primary btn-block" th:href="@{/carrito/pagar}">Realizar pedido
+					</a>
+				</div>
+				<div th:if="${session.rol == 0}">
+					<p>Por favor, inicia sesión o regístrate para realizar el pedido</p>
+					<a class="btn btn-lg btn-primary btn-block" th:href="@{/usuario/form}">Login
+					</a>
+					<a class="btn btn-lg btn-primary btn-block" th:href="@{/usuario/new}">Registro
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Footer-->
+	<footer class="py-5 bg-dark" th:replace="footer"></footer>
+
+</body>
+
+</html>

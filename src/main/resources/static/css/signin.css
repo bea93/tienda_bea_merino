@@ -1,0 +1,70 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  align-items: center;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+
+  }
+
+.form-signin {
+  width: 330px;
+  padding: 15px;
+  margin: 250px;
+}
+
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+#forl{
+	 width:300px;
+  margin: auto;
+}
+
+#for2{
+	 width:1000px;
+  margin: auto;
+}
+
+#izquierda{
+	 width:40%;
+	 float:left;
+}
+
+#derecha{
+	width:40%;
+	 float:left;
+}
+
+#separar{
+	width:20%;
+	 float:left;
+}
+
+#ojo2{
+	position:relative;
+}
+#ojo{
+	position:absolute;
+	right:5px;
+	top:28px;
+	padding:2px 10px;
+	width:40px;
+}

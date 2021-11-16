@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="head"></head>
+
+<body>
+	<!-- Navigation-->
+	<nav th:replace="nav">
+	</nav>
+	<!-- Header-->
+	<header th:replace="header">
+	</header>
+	<!-- Section-->
+	<section class="py-5">
+		<div class="container px-4 px-lg-5 mt-5">
+			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+				<table class="table table-striped">
+					<tr>
+						<th>Nombre</th>
+						<th>Descripción</th>
+						<th>Precio</th>
+						<th>Stock</th>
+						<th></th>
+						<th></th>
+					</tr>
+					<tr th:each="producto:${catalogo}">
+						<td th:text="${producto.nombre}"></td>
+						<td th:text="${producto.descripcion}"></td>
+						<td th:text="${producto.precio}"></td>
+						<td th:text="${producto.stock}"></td>
+						<td>
+							<a th:href="@{/producto/del/}+${producto.id}"> Eliminar producto</a >
+						</td>
+						<td>
+							<a th:href="@{/producto/update/}+${producto.id}">Editar producto</a >
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a th:href="@{/producto/new}" class="btn btn-lg btn-primary btn-block">Añadir Producto</a>
+						</td>	
+					</tr>
+				</table>
+			</div>
+		</div>
+	</section>
+	<!-- Footer-->
+	<footer th:replace="footer"></footer>
+</body>
+
+</html>

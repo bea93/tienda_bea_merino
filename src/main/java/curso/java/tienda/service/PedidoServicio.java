@@ -14,6 +14,8 @@ import curso.java.tienda.repository.PedidoRepositorio;
 
 @Service
 public class PedidoServicio {
+	
+	Logger logger = LogManager.getLogger(PedidoServicio.class.getName());
 	@Autowired
 	private PedidoRepositorio pr;
 	
@@ -24,23 +26,22 @@ public class PedidoServicio {
 	
 	public List<Pedido> getListaPedidos() {
     	
-    	
+		logger.info("Se ha obtenido la lista de pedidos");
         return pr.findAll();
     }
 	public List<Pedido> getListaPedidosCliente(int idCliente) {
     	
-    	
+		logger.info("Se ha obtenido la lista de pedidos de un cliente");
         return pr.findByIdUsuario(idCliente);
     }
 
     public Pedido addPedido(Pedido pedido) {
-    	
+    	logger.info("Se ha añadido un pedido");
     	return pr.save(pedido);
     }
     
     public void deletePedido(int id) {
-    	
-    	
+    	logger.info("Se ha eliminado un pedido");
     	pr.deleteById(id);
     }
     
@@ -50,8 +51,7 @@ public class PedidoServicio {
     }
     
     public Pedido editPedido(Pedido pedido) {
-    	
-    	
+    	logger.info("Se ha editado un pedido");
     	return pr.save(pedido);
     }
 }

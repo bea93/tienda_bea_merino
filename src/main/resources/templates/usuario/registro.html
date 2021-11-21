@@ -20,31 +20,31 @@
 			<div>
 				<label for="email">Email:</label>
 				<input type="text" id="email" name="email" class="form-control" required autofocus>
-			</div >
-			<div >
+			</div>
+			<div>
 				<label for="clave">Contraseña:</label>
 				<input type="password" id="clave" name="clave" class="form-control" required>
-			</div >
+			</div>
 			<div>
 				<label for="clave2">Repita la contraseña:</label>
-				<input type="password" id="clave2" name="clave2" class="form-control" onblur="validacion()" required>
-			</div >
+				<input type="password" id="clave2" name="clave2" class="form-control" onblur="validar(this)" required>
+			</div>
 			<div>
 				<label for="nombre">Nombre:</label>
 				<input type="text" id="nombre" name="nombre" class="form-control" required>
-			</div >
+			</div>
 			<div>
 				<label for="apellido1">Primer apellido:</label>
 				<input type="text" id="apellido1" name="apellido1" class="form-control" required>
-			</div >
+			</div>
 			<div>
 				<label for="apellido2">Segundo apellido:</label>
 				<input type="text" id="apellido2" name="apellido2" class="form-control">
 			</div>
-		</div >
+		</div>
 		<div id="separar">
-		<br>
-		</div >
+			<br>
+		</div>
 		<div id="derecha">
 			<div>
 				<label for="telefono">Teléfono:</label>
@@ -122,10 +122,29 @@
 				<p th:text="${mensaje}" style="color: red;">mensaje</p>
 			</div>
 		</div>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Registro</button><br><br>
+		<button class="btn btn-lg btn-primary btn-block" disabled id="enviar" type="submit">Registro</button><br><br>
 		<a href="/" class="btn btn-lg btn-primary btn-block">Inicio</a>
 		<p class="mt-5 mb-3 text-muted"> &copy; Bea</p>
 	</form>
+	<footer>
+		<script>
+			function validar() {
+				var clave = document.getElementById("clave").value;
+				var clave2 = document.getElementById("clave2").value;
+				var boton = document.getElementById("enviar");
+
+				if (clave.length !== 0) {
+					if (clave2.length !== 0) {
+						if (clave === clave2) {	
+							boton.disabled = false;
+						}else{
+							alert("Las contraseñas no coinciden");
+						}
+					}
+				}
+			}
+		</script>
+	</footer>
 </body>
 
 </html>

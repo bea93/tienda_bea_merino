@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import curso.java.tienda.model.Usuario;
 import curso.java.tienda.service.UsuarioServicio;
 
+
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioControlador {
@@ -61,21 +62,16 @@ public class UsuarioControlador {
 
 	// Recoge los datos del formulario de registro
 	@PostMapping("/new")
-	public String registrarse(Model model, String clave, String clave2, Usuario usuario, HttpSession session) {
-		if (clave.equals(clave2)) {
-			Base64 base64 = new Base64();
-			usuario.setIdRol(3);
-			String passEncriptada = new String(base64.encode(usuario.getClave().getBytes()));
-
-			usuario.setClave(passEncriptada);
-			us.addUsuario(usuario);
-			session.setAttribute("rol", usuario.getIdRol());
-			session.setAttribute("mensaje", "Usuario creado. Bienvenid@, " + usuario.getEmail());
-			return "redirect:/";
-		} else {
-			model.addAttribute("mensaje", "Las contraseñas no coinciden");
-		}
-		return "usuario/registro";
+	public String registrarse(Model model, String clave, Usuario usuario, HttpSession session) {
+		
+		Base64 base64 = new Base64();
+		usuario.setIdRol(3);
+		String passEncriptada = new String(base64.encode(usuario.getClave().getBytes()));
+		usuario.setClave(passEncriptada);
+		us.addUsuario(usuario);
+		session.setAttribute("rol", usuario.getIdRol());
+		session.setAttribute("mensaje", "Usuario creado. Bienvenid@, " + usuario.getEmail());
+		return "redirect:/";
 	}
 
 	// Muestra el formulario de registro
